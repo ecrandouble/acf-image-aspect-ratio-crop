@@ -575,6 +575,7 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
             'cancel' => __('Cancel', 'acf-image-aspect-ratio-crop'),
             'modal_title' => __('Crop image', 'acf-image-aspect-ratio-crop'),
             'reset' => __('Reset crop', 'acf-image-aspect-ratio-crop'),
+            'keep_dimensions' => __('No crop', 'acf-image-aspect-ratio-crop'),
             'upload_progress' => __(
                 'Uploading image. Progress %d%%.',
                 'acf-image-aspect-ratio-crop'

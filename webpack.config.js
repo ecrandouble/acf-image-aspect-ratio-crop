@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const WatchTimePlugin = require('webpack-watch-time-plugin');
 const path = require('path');
 
 module.exports = (env, argv) => ({
@@ -33,16 +32,12 @@ module.exports = (env, argv) => ({
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|tiff|webp|gif|ico|woff|woff2|eot|ttf|otf|mp4|webm|wav|mp3|m4a|aac|oga)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              context: 'src',
-              name: '[path][name].[ext]?ver=[md5:hash:8]',
-            },
-          },
-        ],
+        test: /\.(png|jpg|jpeg|tiff|webp|gif|ico|woff|woff2|eot|ttf|otf|mp4|webm|wav|mp3|m4a|aac|oga)$/,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.svg$/,
+        type: 'asset/source',
       },
       {
         test: /\.s?css$/,
@@ -57,8 +52,9 @@ module.exports = (env, argv) => ({
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [require('autoprefixer')({})],
+              postcssOptions: {
+                plugins: [['autoprefixer', {}]],
+              },
               sourceMap: true,
             },
           },
@@ -77,6 +73,5 @@ module.exports = (env, argv) => ({
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new WatchTimePlugin(),
   ],
 });

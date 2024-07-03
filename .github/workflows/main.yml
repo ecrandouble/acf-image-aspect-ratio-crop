@@ -14,25 +14,26 @@ jobs:
         with:
           php-version: '5.6'
           extensions: zip
-          
+
       - name: Set Node Version
         uses: actions/setup-node@v2
         with:
           node-version-file: '.nvmrc'
-        
+
       - name: Install dependencies
         run: npm install
 
       - name: Build
         run: npx webpack -p
 
-      - name: WordPress Plugin Deploy
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: 10up/action-wordpress-plugin-deploy@1.4.1
-        env:
-          SLUG: acf-image-aspect-ratio-crop
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+      # Do not publish od wordpress.org like the original dev does.
+      # - name: WordPress Plugin Deploy
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   uses: 10up/action-wordpress-plugin-deploy@1.4.1
+      #   env:
+      #     SLUG: acf-image-aspect-ratio-crop
+      #     SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+      #     SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
 
       - name: Release
         run: |

@@ -1,8 +1,8 @@
 <?php
 
 /*
-Plugin Name: Advanced Custom Fields: Image Aspect Ratio Crop
-Plugin URI: https://github.com/joppuyo/acf-image-aspect-ratio-crop
+Plugin Name: Advanced Custom Fields: Image Aspect Ratio Crop Dev
+Plugin URI: https://github.com/ecrandouble/acf-image-aspect-ratio-crop
 Description: ACF field that allows user to crop image to a specific aspect ratio or pixel size
 Version: 6.0.3
 Author: Johannes Siipola
@@ -21,6 +21,8 @@ if (file_exists(__DIR__ . '/c3.php')) {
 if (!defined('ABSPATH')) {
     exit();
 }
+
+require_once __DIR__ . '/npx-image-editor-gd.php';
 
 class npx_acf_plugin_image_aspect_ratio_crop
 {
@@ -77,7 +79,9 @@ class npx_acf_plugin_image_aspect_ratio_crop
                     $post_id = $_GET['page'];
                 }
 
-                $temp_post_id = !empty($_POST['aiarc_temp_post_id']) ? $_POST['aiarc_temp_post_id'] : null;
+                $temp_post_id = !empty($_POST['aiarc_temp_post_id'])
+                    ? $_POST['aiarc_temp_post_id']
+                    : null;
 
                 // Bail early if we don't have data to process
                 if (empty($temp_post_id)) {
@@ -440,137 +444,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
      */
     public function settings_page()
     {
-        $updated = false;
-        $settings = $this->user_settings;
-        if (!empty($_POST)) {
-            check_admin_referer('acf-image-aspect-ratio-crop');
-
-            if (!empty($_POST['modal_type'])) {
-                $settings['modal_type'] = $_POST['modal_type'];
-            }
-
-            if (!empty($_POST['delete_unused'])) {
-                $settings['delete_unused'] = filter_var(
-                    $_POST['delete_unused'],
-                    FILTER_VALIDATE_BOOLEAN
-                );
-            }
-
-            if (!empty($_POST['rest_api_compat'])) {
-                $settings['rest_api_compat'] = filter_var(
-                    $_POST['rest_api_compat'],
-                    FILTER_VALIDATE_BOOLEAN
-                );
-            }
-
-            update_option('acf-image-aspect-ratio-crop-settings', $settings);
-            $updated = true;
-        }
-        $modal_type = $settings['modal_type'];
-        $delete_unused = $settings['delete_unused'];
-        $rest_api_compat = $settings['rest_api_compat'];
-
-        echo '<div class="wrap">';
-        echo '<h1>' .
-            __('ACF Image Aspect Ratio Crop', 'acf-image-aspect-ratio-crop') .
-            '</h1>';
-        echo '<div class="js-finnish-base-forms-admin-notices"></div>';
-        if ($updated) {
-            echo '<div class="notice notice-success">';
-            echo '<p>' .
-                __('Options have been updated', 'acf-image-aspect-ratio-crop') .
-                '</p>';
-            echo '</div>';
-        }
-        echo '<form method="post">';
-        echo '<table class="form-table">';
-        echo '<tbody>';
-        echo '<tr>';
-        echo '<th scope="row">';
-        echo '<label for="modal_type">' .
-            __(
-                'Image displayed in attachment edit modal dialog',
-                'acf-image-aspect-ratio-crop'
-            ) .
-            '</label>';
-        echo '</th>';
-        echo '<td>';
-        echo '<p><input type="radio" id="cropped" name="modal_type" value="cropped" ' .
-            checked($modal_type, 'cropped', false) .
-            '><label for="cropped"> ' .
-            __('Cropped image', 'acf-image-aspect-ratio-crop') .
-            '</label></p>';
-        echo '<p><input type="radio" id="original" name="modal_type" value="original" ' .
-            checked($modal_type, 'original', false) .
-            '><label for="original"> ' .
-            __('Original image', 'acf-image-aspect-ratio-crop') .
-            '</label></p>';
-        echo '</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<th scope="row">';
-        echo '<label for="modal_type">' .
-            __('Delete unused cropped images', 'acf-image-aspect-ratio-crop') .
-            ' ' .
-            __('(Beta feature)', 'acf-image-aspect-ratio-crop') .
-            '</label>';
-        echo '</th>';
-        echo '<td>';
-        echo '<p><input type="radio" id="delete_unused_true" name="delete_unused" value="true" ' .
-            checked($delete_unused, true, false) .
-            '><label for="delete_unused_true"> ' .
-            __('Enabled', 'acf-image-aspect-ratio-crop') .
-            '</label></p>';
-        echo '<p><input type="radio" id="delete_unused_false" name="delete_unused" value="false" ' .
-            checked($delete_unused, false, false) .
-            '><label for="delete_unused_false"> ' .
-            __('Disabled', 'acf-image-aspect-ratio-crop') .
-            '</label></p>';
-        echo '</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<td colspan="2" style="padding: 0">';
-        echo __(
-            'Please note that "Delete unused cropped images" feature is a beta feature because it requires more testing. Please do not enable the option without first backing up your database and uploads in order to prevent potential data loss.',
-            'acf-image-aspect-ratio-crop'
-        );
-        echo '</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<th scope="row">';
-        echo '<label for="modal_type">' .
-            __('REST API compatibility mode', 'acf-image-aspect-ratio-crop') .
-            '</label>';
-        echo '</th>';
-        echo '<td>';
-        echo '<p><input type="radio" id="rest_api_compat_true" name="rest_api_compat" value="true" ' .
-            checked($rest_api_compat, true, false) .
-            '><label for="rest_api_compat_true"> ' .
-            __('Enabled', 'acf-image-aspect-ratio-crop') .
-            '</label></p>';
-        echo '<p><input type="radio" id="rest_api_compat_false" name="rest_api_compat" value="false" ' .
-            checked($rest_api_compat, false, false) .
-            '><label for="rest_api_compat_false"> ' .
-            __('Disabled', 'acf-image-aspect-ratio-crop') .
-            '</label></p>';
-        echo '</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<td colspan="2" style="padding: 0">';
-        echo __(
-            'When you enable the REST API compatibility mode, cropping in the WordPress administration interface will use admin-ajax.php instead of the REST API. Use this compatibility mode if you do not have REST API enabled. Please note that this is a temporary fix since the REST API is the way forward. The compatibility mode will be removed in a future major release of the plugin.',
-            'acf-image-aspect-ratio-crop'
-        );
-        echo '</td>';
-        echo '</tr>';
-        echo '</tbody>';
-        echo '</table>';
-        echo '<p class="submit">';
-        echo '<input class="button-primary js-finnish-base-forms-submit-button" type="submit" name="submit-button" value="Save">';
-        echo '</p>';
-        wp_nonce_field('acf-image-aspect-ratio-crop');
-        echo '</form>';
-        echo '</div>';
+        require __DIR__ . DIRECTORY_SEPARATOR . 'settings-page.php';
     }
 
     function initialize_settings()
@@ -606,6 +480,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
         $default_user_settings = [
             'modal_type' => 'cropped',
             'delete_unused' => false,
+            'allow_no_crop' => true,
             'rest_api_compat' => false,
         ];
 
@@ -1020,6 +895,12 @@ class npx_acf_plugin_image_aspect_ratio_crop
         return new WP_REST_Response(['attachment_id' => $attachment_id]);
     }
 
+    public function add_image_editor($implementations)
+    {
+        array_unshift($implementations, 'NPX_Image_Editor_GD');
+        return $implementations;
+    }
+
     /**
      * @param $data
      * @return array
@@ -1041,13 +922,13 @@ class npx_acf_plugin_image_aspect_ratio_crop
 
         // If the difference between the images is less than half a percentage, use the original image
         // prettier-ignore
-        if ($image_data['height'] - $data['height'] < $image_data['height'] * 0.005 &&
-            $image_data['width'] - $data['width'] < $image_data['width'] * 0.005 &&
-            $data['cropType'] !== 'pixel_size'
-        ) {
-            wp_send_json(['id' => $data['id']]);
-            wp_die();
-        }
+        // if ($image_data['height'] - $data['height'] < $image_data['height'] * 0.005 &&
+        //     $image_data['width'] - $data['width'] < $image_data['width'] * 0.005 &&
+        //     $data['cropType'] !== 'pixel_size'
+        // ) {
+        //     wp_send_json(['id' => $data['id']]);
+        //     wp_die();
+        // }
 
         do_action('aiarc_pre_customize_upload_dir');
 
@@ -1066,6 +947,8 @@ class npx_acf_plugin_image_aspect_ratio_crop
         $backup_file = implode('.', $parts) . '.bak.' . $extension;
 
         add_filter('jpeg_quality', [$this, 'jpeg_quality']);
+
+        add_filter('wp_image_editors', [$this, 'add_image_editor']);
 
         $image = null;
         $scaled_data = null;
@@ -1193,8 +1076,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
             $width .
             '-' .
             $height .
-            '.' .
-            $original_file_extension;
+            '.png';
 
         // Generate target path new file using existing media library
         $target_file_path =

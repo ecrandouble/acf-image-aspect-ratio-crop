@@ -10,7 +10,7 @@ services:
         xdebug_version: '$XDEBUG_VERSION'
     restart: always
     ports:
-      - 80:80
+      - 8888:8888
     environment:
       - APACHE_RUN_USER="#33"
       - WORDPRESS_DB_HOST=db

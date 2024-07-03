@@ -9,7 +9,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { sprintf } from 'sprintf-js';
 
-(function($) {
+(function ($) {
   var field = null;
 
   acf.fields.image_aspect_ratio_crop = acf.field.extend({
@@ -32,7 +32,7 @@ import { sprintf } from 'sprintf-js';
       'change .js-aiarc-upload': 'front_end_upload',
     },
 
-    front_end_upload: function(event) {
+    front_end_upload: function (event) {
       let uploadElement = event.currentTarget;
 
       var acfKey = $(this.$field)
@@ -48,7 +48,7 @@ import { sprintf } from 'sprintf-js';
         return;
       }
 
-      Array.from(Array(files.length).keys()).map(index => {
+      Array.from(Array(files.length).keys()).map((index) => {
         formData.append('image', files[index], files[index].name);
         formData.append('key', acfKey);
       });
@@ -56,7 +56,7 @@ import { sprintf } from 'sprintf-js';
       uploadElement.value = '';
 
       let settings = {
-        onUploadProgress: progressEvent => {
+        onUploadProgress: (progressEvent) => {
           let percentCompleted = Math.round(
             (progressEvent.loaded * 100) / progressEvent.total,
           );
@@ -76,34 +76,26 @@ import { sprintf } from 'sprintf-js';
         },
       };
 
-      $(this.$el)
-        .find('.js-aiarc-upload')
-        .hide();
+      $(this.$el).find('.js-aiarc-upload').hide();
 
-      $(this.$el)
-        .find('.js-aiarc-upload-progress')
-        .show();
+      $(this.$el).find('.js-aiarc-upload-progress').show();
 
       axios
         .post(`${window.aiarc.api_root}/aiarc/v1/upload`, formData, settings)
-        .then(response => {
+        .then((response) => {
           // This is just for the preview
           axios
             .get(
               `${window.aiarc.api_root}/aiarc/v1/get/${response.data.attachment_id}`,
             )
-            .then(response => {
+            .then((response) => {
               let attachment = new window.Backbone.Model(response.data);
               this.render(attachment);
             });
 
-          $(this.$el)
-            .find('.js-aiarc-upload-progress')
-            .hide();
+          $(this.$el).find('.js-aiarc-upload-progress').hide();
 
-          $(this.$el)
-            .find('.js-aiarc-upload')
-            .show();
+          $(this.$el).find('.js-aiarc-upload').show();
 
           let $field = this.$field;
 
@@ -117,21 +109,17 @@ import { sprintf } from 'sprintf-js';
             .get(
               `${window.aiarc.api_root}/aiarc/v1/get/${response.data.attachment_id}`,
             )
-            .then(response => {
+            .then((response) => {
               let attachment = new window.Backbone.Model(response.data);
 
               this.render(attachment);
               this.openModal({ attachment: attachment, field: $field });
             });
         })
-        .catch(error => {
-          $(this.$el)
-            .find('.js-aiarc-upload-progress')
-            .hide();
+        .catch((error) => {
+          $(this.$el).find('.js-aiarc-upload-progress').hide();
 
-          $(this.$el)
-            .find('.js-aiarc-upload')
-            .show();
+          $(this.$el).find('.js-aiarc-upload').show();
 
           let errorMessage = window.aiarc_translations.upload_failed;
 
@@ -160,7 +148,7 @@ import { sprintf } from 'sprintf-js';
      *  @return	n/a
      */
 
-    focus: function() {
+    focus: function () {
       // vars
       this.$el = this.$field.find('.acf-image-uploader-aspect-ratio-crop');
       this.$input = this.$el.find('input[type="hidden"]');
@@ -183,7 +171,7 @@ import { sprintf } from 'sprintf-js';
      *  @return	n/a
      */
 
-    initialize: function() {
+    initialize: function () {
       this.isFirstCrop = null;
       var self = this;
 
@@ -205,8 +193,31 @@ import { sprintf } from 'sprintf-js';
         });
 
       $(document)
+        .off('click', '.js-acf-image-aspect-ratio-crop-keep')
+        .on('click', '.js-acf-image-aspect-ratio-crop-keep', () => {
+          const imageData = this.cropper.getImageData();
+          console.log(imageData, this.cropper.getData());
+          $('.js-acf-image-aspect-ratio-crop-crop').data(
+            'aspect-ratio-width',
+            imageData.naturalWidth,
+          );
+          $('.js-acf-image-aspect-ratio-crop-crop').data(
+            'aspect-ratio-height',
+            imageData.naturalHeight,
+          );
+          this.cropper.setAspectRatio(imageData.width / imageData.height);
+          this.cropper.setData({
+            x: 0,
+            y: 0,
+            width: imageData.naturalWidth,
+            height: imageData.naturalHeight,
+          });
+          $('.js-acf-image-aspect-ratio-crop-crop').click();
+        });
+
+      $(document)
         .off('click', '.js-acf-image-aspect-ratio-crop-crop')
-        .on('click', '.js-acf-image-aspect-ratio-crop-crop', function() {
+        .on('click', '.js-acf-image-aspect-ratio-crop-crop', function () {
           var cropData = self.cropper.getData(true);
 
           $('.js-acf-image-aspect-ratio-crop-modal').css(
@@ -237,6 +248,7 @@ import { sprintf } from 'sprintf-js';
 
           $('.js-acf-image-aspect-ratio-crop-crop').prop('disabled', true);
           $('.js-acf-image-aspect-ratio-crop-reset').prop('disabled', true);
+          $('.js-acf-image-aspect-ratio-crop-keep').prop('disabled', true);
 
           // prettier-ignore
           var loading = '<div class="acf-image-aspect-ratio-crop-modal-loading">' +
@@ -294,7 +306,7 @@ import { sprintf } from 'sprintf-js';
 
           axios
             .post(url, data, options)
-            .then(response => {
+            .then((response) => {
               self.cropComplete(response.data);
               $('.js-acf-image-aspect-ratio-crop-crop').prop('disabled', false);
               $('.js-acf-image-aspect-ratio-crop-reset').prop(
@@ -303,7 +315,7 @@ import { sprintf } from 'sprintf-js';
               );
               $('.js-acf-image-aspect-ratio-crop-modal-footer-status').empty();
             })
-            .catch(response => {
+            .catch((response) => {
               console.error(response);
               self.cropper.enable();
               $('.js-acf-image-aspect-ratio-crop-crop').prop('disabled', false);
@@ -334,7 +346,7 @@ import { sprintf } from 'sprintf-js';
      *  @return	data (object)
      */
 
-    prepare: function(attachment) {
+    prepare: function (attachment) {
       // defaults
       attachment = attachment || {};
 
@@ -385,7 +397,7 @@ import { sprintf } from 'sprintf-js';
      *  @return	n/a
      */
 
-    render: function(data) {
+    render: function (data) {
       // prepare
 
       data = this.prepare(data);
@@ -429,7 +441,7 @@ import { sprintf } from 'sprintf-js';
      *  @return	n/a
      */
 
-    add: function() {
+    add: function () {
       // reference
       var self = this,
         $field = this.$field;
@@ -447,7 +459,7 @@ import { sprintf } from 'sprintf-js';
         library: this.o.library,
         mime_types: this.o.mime_types,
 
-        select: function(attachment, i) {
+        select: function (attachment, i) {
           // select / add another image field?
           if (i > 0) {
             // vars
@@ -458,7 +470,7 @@ import { sprintf } from 'sprintf-js';
             $field = false;
 
             // find next image field
-            $tr.nextAll('.acf-row:visible').each(function() {
+            $tr.nextAll('.acf-row:visible').each(function () {
               // get next $field
               $field = acf.get_field(key, $(this));
 
@@ -507,13 +519,13 @@ import { sprintf } from 'sprintf-js';
       });
     },
 
-    changeCrop: function() {
+    changeCrop: function () {
       this.isFirstCrop = false;
       var originalImageId = $(this.$field)
         .find('.acf-image-uploader-aspect-ratio-crop')
         .data('original-image-id');
 
-      let callback = response => {
+      let callback = (response) => {
         let attachment = new window.Backbone.Model(response.data);
         let $field = this.$field;
         this.openModal({ attachment: attachment, field: $field });
@@ -522,7 +534,7 @@ import { sprintf } from 'sprintf-js';
       if (window.aiarc_settings.rest_api_compat === '') {
         axios
           .get(`${window.aiarc.api_root}/aiarc/v1/get/${originalImageId}`)
-          .then(response => callback(response));
+          .then((response) => callback(response));
       }
 
       if (window.aiarc_settings.rest_api_compat === '1') {
@@ -530,7 +542,7 @@ import { sprintf } from 'sprintf-js';
           action: 'acf_image_aspect_ratio_crop_get_attachment',
           data: JSON.stringify({ attachment_id: originalImageId }),
         });
-        axios.post(ajaxurl, data).then(response => callback(response));
+        axios.post(ajaxurl, data).then((response) => callback(response));
       }
     },
 
@@ -547,7 +559,7 @@ import { sprintf } from 'sprintf-js';
      *  @return	n/a
      */
 
-    edit: function() {
+    edit: function () {
       // reference
       var self = this,
         $field = this.$field;
@@ -588,7 +600,7 @@ import { sprintf } from 'sprintf-js';
      *  @return	n/a
      */
 
-    remove: function() {
+    remove: function () {
       // Remove all data attributes from the previous image
       this.$field
         .find('.acf-image-uploader-aspect-ratio-crop')
@@ -617,17 +629,17 @@ import { sprintf } from 'sprintf-js';
      *  @return	n/a
      */
 
-    change: function(e) {
+    change: function (e) {
       //acf.fields.file.get_file_info(e.$el, this.$input);
     },
 
-    escapeHandler: function(event) {
+    escapeHandler: function (event) {
       if (event.key === 'Escape') {
         this.closeModal();
       }
     },
 
-    openModal: function(data) {
+    openModal: function (data) {
       var url = data.attachment.attributes.url;
       var id = data.attachment.attributes.id;
       field = data.field;
@@ -652,16 +664,17 @@ import { sprintf } from 'sprintf-js';
 
       var options = {
         aspectRatio: aspectRatioWidth / aspectRatioHeight,
-        viewMode: 1,
+        // viewMode: 0,
         autoCropArea: 1,
         zoomable: false,
         checkCrossOrigin: false,
         checkOrientation: false,
         responsive: true,
+        // minContainerHeight: 338
       };
 
       if (cropType === 'pixel_size') {
-        options.crop = function(event) {
+        options.crop = function (event) {
           let width = event.detail.width;
           let height = event.detail.height;
           if (width < aspectRatioWidth || height < aspectRatioHeight) {
@@ -674,7 +687,7 @@ import { sprintf } from 'sprintf-js';
       }
 
       if (cropType === 'aspect_ratio' && minHeight !== 0 && minWidth !== 0) {
-        options.crop = function(event) {
+        options.crop = function (event) {
           let width = event.detail.width;
           let height = event.detail.height;
           if (width < minWidth || height < minHeight) {
@@ -709,7 +722,7 @@ import { sprintf } from 'sprintf-js';
           class="acf-image-aspect-ratio-crop-modal-heading-close js-acf-image-aspect-ratio-crop-cancel"
           aria-label="Close"
         >
-          ${require('!raw-loader!./close.svg')}
+          ${require('./close.svg')}
         </button>
       </div>
       <div class="acf-image-aspect-ratio-crop-modal-image-container">
@@ -727,11 +740,14 @@ import { sprintf } from 'sprintf-js';
           <button
             class="aiarc-button aiarc-button-link acf-image-aspect-ratio-crop-reset js-acf-image-aspect-ratio-crop-reset"
           >
-            ${require('!raw-loader!./reset.svg')}
+            ${require('./reset.svg')}
             ${aiarc_translations.reset}
           </button>
           <button class="aiarc-button aiarc-button-default js-acf-image-aspect-ratio-crop-cancel">
             ${aiarc_translations.cancel}
+          </button>
+          <button class="aiarc-button aiarc-button-default js-acf-image-aspect-ratio-crop-keep">
+            ${aiarc_translations.keep_dimensions}
           </button>
           <button
             class="aiarc-button aiarc-button-primary js-acf-image-aspect-ratio-crop-crop"
@@ -758,7 +774,7 @@ import { sprintf } from 'sprintf-js';
       window._acf_image_aspect_ratio_cropper = this.cropper;
     },
 
-    cropComplete: function(data) {
+    cropComplete: function (data) {
       // Save coordinates so they are remembered even without saving the post first
       $(field)
         .find('.acf-image-uploader-aspect-ratio-crop')
@@ -768,12 +784,9 @@ import { sprintf } from 'sprintf-js';
       // Cropping successful, change image to cropped version
       this.cropper.destroy();
 
-      $(field)
-        .find('input')
-        .first()
-        .val(data.id);
+      $(field).find('input').first().val(data.id);
 
-      let callback = response => {
+      let callback = (response) => {
         let attachment = new window.Backbone.Model(response.data);
 
         this.render(attachment);
@@ -784,7 +797,7 @@ import { sprintf } from 'sprintf-js';
       if (window.aiarc_settings.rest_api_compat === '') {
         axios
           .get(`${window.aiarc.api_root}/aiarc/v1/get/${data.id}`)
-          .then(response => callback(response));
+          .then((response) => callback(response));
       }
 
       if (window.aiarc_settings.rest_api_compat === '1') {
@@ -792,11 +805,11 @@ import { sprintf } from 'sprintf-js';
           action: 'acf_image_aspect_ratio_crop_get_attachment',
           data: JSON.stringify({ attachment_id: data.id }),
         });
-        axios.post(ajaxurl, postData).then(response => callback(response));
+        axios.post(ajaxurl, postData).then((response) => callback(response));
       }
     },
 
-    closeModal: function() {
+    closeModal: function () {
       if (this.isFirstCrop) {
         // If it's the first time cropping an image, we don't want to
         // leave the incorrect aspect ratio image in the field
