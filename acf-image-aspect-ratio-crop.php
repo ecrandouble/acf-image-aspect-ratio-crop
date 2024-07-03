@@ -18,11 +18,22 @@ if (file_exists(__DIR__ . '/c3.php')) {
 }
 
 // exit if accessed directly
-if (!defined('ABSPATH')) {
-    exit();
+defined('ABSPATH') || exit();
+
+require_once __DIR__ . '/Autoloader.php';
+require_once __DIR__ . '/npx-image-editor-gd.php';
+
+if (!\Joppuyo\AIARC\Autoloader::init()) {
+    return;
 }
 
-require_once __DIR__ . '/npx-image-editor-gd.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+PucFactory::buildUpdateChecker(
+    'https://github.com/ecrandouble/acf-image-aspect-ratio-crop',
+    __FILE__, //Full path to the main plugin file or functions.php.
+    'acf-image-aspect-ratio-crop'
+);
 
 class npx_acf_plugin_image_aspect_ratio_crop
 {
@@ -377,7 +388,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
                             $info
                         ) use ($resolve) {
                             $value = $resolve($root, $args, $context, $info);
-                            return WPGraphQL\Data\DataSource::resolve_post_object(
+                            return \WPGraphQL\Data\DataSource::resolve_post_object(
                                 (int) $value,
                                 $context
                             );

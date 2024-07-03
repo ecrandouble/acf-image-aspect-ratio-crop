@@ -762,7 +762,7 @@ import { sprintf } from 'sprintf-js';
             data-aspect-ratio-height="${aspectRatioHeight}"
             data-aspect-ratio-width="${aspectRatioWidth}"
             data-crop-type="${cropType}"
-          >vcsaddsdsa
+          >
             ${aiarc_translations.crop}
           </button>
         </div>

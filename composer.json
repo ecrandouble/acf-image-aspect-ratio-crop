@@ -27,5 +27,8 @@
   "config": {
     "process-timeout": 0,
     "allow-plugins": true
+  },
+  "require": {
+    "yahnis-elsts/plugin-update-checker": "^5.4"
   }
 }

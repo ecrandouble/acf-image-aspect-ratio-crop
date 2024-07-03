@@ -27,7 +27,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install && composer install --no-dev
 
       - name: Build
         run: npx webpack
