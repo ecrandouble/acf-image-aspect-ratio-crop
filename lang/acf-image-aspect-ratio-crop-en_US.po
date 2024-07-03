@@ -1,0 +1,339 @@
+# Translation of Plugins - Advanced Custom Fields: Image Aspect Ratio Crop Field - Stable (latest release) in French (France)
+# This file is distributed under the same license as the Plugins - Advanced Custom Fields: Image Aspect Ratio Crop Field - Stable (latest release) package.
+msgid ""
+msgstr ""
+"Project-Id-Version: acf-image-aspect-ratio-crop\n"
+"POT-Creation-Date: 2024-07-03 16:39+0200\n"
+"PO-Revision-Date: 2024-07-03 17:14+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Poedit-KeywordsList: __;_e;_x;_x:1,2c\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: acf-image-aspect-ratio-crop.php\n"
+"X-Poedit-SearchPath-1: Autoloader.php\n"
+"X-Poedit-SearchPath-2: npx-image-editor-gd.php\n"
+"X-Poedit-SearchPath-3: settings-page.php\n"
+"X-Poedit-SearchPath-4: fields\n"
+
+#: acf-image-aspect-ratio-crop.php:219 acf-image-aspect-ratio-crop.php:737
+msgid "Attachment not found"
+msgstr "Attachment not found"
+
+#: acf-image-aspect-ratio-crop.php:300 acf-image-aspect-ratio-crop.php:304
+#: settings-page.php:42
+msgid "ACF Image Aspect Ratio Crop"
+msgstr "ACF Image Aspect Ratio Crop"
+
+#: acf-image-aspect-ratio-crop.php:319
+msgid "Settings"
+msgstr "Settings"
+
+#: acf-image-aspect-ratio-crop.php:765
+msgid "Image field missing."
+msgstr "Image field missing."
+
+#: acf-image-aspect-ratio-crop.php:772
+msgid "Key field missing."
+msgstr "Key field missing."
+
+#: acf-image-aspect-ratio-crop.php:805
+msgid "Invalid file type."
+msgstr "Invalid file type."
+
+#: acf-image-aspect-ratio-crop.php:819
+#, php-format
+msgid "File size too large. Maximum file size is %d megabytes."
+msgstr "File size too large. Maximum file size is %d megabytes."
+
+#: acf-image-aspect-ratio-crop.php:836
+#, php-format
+msgid "File size too small. Minimum file size is %d megabytes."
+msgstr "File size too small. Minimum file size is %d megabytes."
+
+#: acf-image-aspect-ratio-crop.php:854
+msgid "Failed to parse image."
+msgstr "Failed to parse image."
+
+#: acf-image-aspect-ratio-crop.php:870
+#, php-format
+msgid "Image too small. Minimum image dimensions are %d×%d pixels."
+msgstr "Image too small. Minimum image dimensions are %d×%d pixels."
+
+#: acf-image-aspect-ratio-crop.php:1210
+msgid "Nonce missing."
+msgstr "Nonce missing."
+
+#: acf-image-aspect-ratio-crop.php:1220
+msgid "Invalid nonce."
+msgstr "Invalid nonce."
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:45
+msgid "Image Aspect Ratio Crop"
+msgstr "Image Aspect Ratio Crop"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:74
+msgid "Select Image"
+msgstr "Select Image"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:75
+msgid "Edit Image"
+msgstr "Edit Image"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:76
+msgid "Update Image"
+msgstr "Update Image"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:77
+msgid "Uploaded to this post"
+msgstr "Uploaded to this post"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:78
+msgid "All images"
+msgstr "All images"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:166
+msgid "Crop type"
+msgstr "Crop type"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:172
+msgid "Aspect ratio"
+msgstr "Aspect ratio"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:175
+msgid "Pixel size"
+msgstr "Pixel size"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:176
+msgid "Free crop"
+msgstr "Free crop"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:181
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:255
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:287
+msgid "Width"
+msgstr "Width"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:194
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:264
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:296
+msgid "Height"
+msgstr "Height"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:208
+msgid "Return Value"
+msgstr "Return Value"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:210
+msgid "Specify the returned value on front end"
+msgstr "Specify the returned value on front end"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:217
+msgid "Image Array"
+msgstr "Image Array"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:218
+msgid "Image URL"
+msgstr "Image URL"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:219
+msgid "Image ID"
+msgstr "Image ID"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:225
+msgid "Preview Size"
+msgstr "Preview Size"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:226
+msgid "Shown when entering data"
+msgstr "Shown when entering data"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:234
+msgid "Library"
+msgstr "Library"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:235
+msgid "Limit the media library choice"
+msgstr "Limit the media library choice"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:240
+msgid "All"
+msgstr "All"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:241
+msgid "Uploaded to post"
+msgstr "Uploaded to post"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:247
+msgid "Minimum"
+msgstr "Minimum"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:249
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:282
+msgid "Restrict which images can be uploaded"
+msgstr "Restrict which images can be uploaded"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:273
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:306
+msgid "File size"
+msgstr "File size"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:280
+msgid "Maximum"
+msgstr "Maximum"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:313
+msgid "Allowed file types"
+msgstr "Allowed file types"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:315
+msgid "Comma separated list. Leave blank for all types"
+msgstr "Comma separated list. Leave blank for all types"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:481
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:574
+msgid "Crop"
+msgstr "Crop"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:485
+msgid "Edit"
+msgstr "Edit"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:488
+msgid "Remove"
+msgstr "Remove"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:519
+msgid "No image selected"
+msgstr "No image selected"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:523
+msgid "Add Image"
+msgstr "Add Image"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:567
+msgid "Cropping image..."
+msgstr "Cropping image..."
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:571
+msgid "Failed to crop image"
+msgstr "Failed to crop image"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:575
+msgid "Cancel"
+msgstr "Cancel"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:576
+msgid "Crop image"
+msgstr "Crop image"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:577
+msgid "Reset crop"
+msgstr "Reset crop"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:578
+msgid "No crop"
+msgstr "No crop"
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:580
+#, php-format
+msgid "Uploading image. Progress %d%%."
+msgstr "Uploading image. Progress %d%%."
+
+#: fields/class-npx-acf-field-image-aspect-ratio-crop-v5.php:584
+msgid "Upload failed."
+msgstr "Upload failed."
+
+#: npx-image-editor-gd.php:75 npx-image-editor-gd.php:127
+msgid "Image crop failed."
+msgstr "Image crop failed."
+
+#: settings-page.php:49
+msgid "Options have been updated"
+msgstr "Options have been updated"
+
+#: settings-page.php:62
+msgid "Image displayed in attachment edit modal dialog"
+msgstr "Image displayed in attachment edit modal dialog"
+
+#: settings-page.php:76
+msgid "Cropped image"
+msgstr "Cropped image"
+
+#: settings-page.php:87
+msgid "Original image"
+msgstr "Original image"
+
+#: settings-page.php:98
+msgid "Allow to keep the original dimensions of the image"
+msgstr "Allow to keep the original dimensions of the image"
+
+#: settings-page.php:112 settings-page.php:154 settings-page.php:200
+msgid "Enabled"
+msgstr "Enabled"
+
+#: settings-page.php:125 settings-page.php:167 settings-page.php:213
+msgid "Disabled"
+msgstr "Disabled"
+
+#: settings-page.php:136
+msgid "Delete unused cropped images"
+msgstr "Delete unused cropped images"
+
+#: settings-page.php:140
+msgid "(Beta feature)"
+msgstr "(Beta feature)"
+
+#: settings-page.php:177
+msgid ""
+"Please note that \"Delete unused cropped images\" feature is a beta feature "
+"because it requires more testing. Please do not enable the option without "
+"first backing up your database and uploads in order to prevent potential "
+"data loss."
+msgstr ""
+"Please note that \"Delete unused cropped images\" feature is a beta feature "
+"because it requires more testing. Please do not enable the option without "
+"first backing up your database and uploads in order to prevent potential "
+"data loss."
+
+#: settings-page.php:186
+msgid "REST API compatibility mode"
+msgstr "REST API compatibility mode"
+
+#: settings-page.php:223
+msgid ""
+"When you enable the REST API compatibility mode, cropping in the WordPress "
+"administration interface will use admin-ajax.php instead of the REST API. "
+"Use this compatibility mode if you do not have REST API enabled. Please note "
+"that this is a temporary fix since the REST API is the way forward. The "
+"compatibility mode will be removed in a future major release of the plugin."
+msgstr ""
+"When you enable the REST API compatibility mode, cropping in the WordPress "
+"administration interface will use admin-ajax.php instead of the REST API. "
+"Use this compatibility mode if you do not have REST API enabled. Please note "
+"that this is a temporary fix since the REST API is the way forward. The "
+"compatibility mode will be removed in a future major release of the plugin."
+
+msgid "https://siipo.la"
+msgstr "https://siipo.la"
+
+msgid "Johannes Siipola"
+msgstr "Johannes Siipola"
+
+msgid "https://github.com/joppuyo/acf-image-aspect-ratio-crop"
+msgstr "https://github.com/joppuyo/acf-image-aspect-ratio-crop"
+
+msgid "Advanced Custom Fields: Image Aspect Ratio Crop"
+msgstr "Advanced Custom Fields: Image Aspect Ratio Crop"
+
+msgid ""
+"ACF field that allows user to crop image to a specific aspect ratio or pixel "
+"size"
+msgstr ""
+"ACF field that allows user to crop image to a specific aspect ratio or pixel "
+"size"

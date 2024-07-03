@@ -1,15 +1,16 @@
 <?php
 
 /*
-Plugin Name: Advanced Custom Fields: Image Aspect Ratio Crop Dev
+Plugin Name: ecrandouble ACF: Image Aspect Ratio Crop
 Plugin URI: https://github.com/ecrandouble/acf-image-aspect-ratio-crop
 Description: ACF field that allows user to crop image to a specific aspect ratio or pixel size
 Version: 6.1.0
-Author: Johannes Siipola
+Author: ecrandouble (fork from Johannes Siipola's plugin)
 Author URI: https://siipo.la
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: acf-image-aspect-ratio-crop
+Domain Path: /lang
 */
 
 // Load c3 in CI environment for code coverage
@@ -73,7 +74,11 @@ class npx_acf_plugin_image_aspect_ratio_crop
 
         // set text domain
         // https://codex.wordpress.org/Function_Reference/load_plugin_textdomain
-        load_plugin_textdomain('acf-image-aspect-ratio-crop');
+        load_plugin_textdomain(
+            'acf-image-aspect-ratio-crop',
+            false,
+            basename(__DIR__) . '/lang'
+        );
 
         add_action('plugins_loaded', [$this, 'initialize_settings']);
 
