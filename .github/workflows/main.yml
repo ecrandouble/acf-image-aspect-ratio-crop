@@ -1,11 +1,17 @@
-name: PHP Composer
+name: Deploy
 
-on: [push]
+on:
+  [push]
+  # workflow_run:
+  #   workflows: ["Test"]
+  #   branches: [master, main]
+  #   types:
+  #     - completed
 
 jobs:
   build:
     runs-on: ubuntu-20.04
-
+    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v1
 
