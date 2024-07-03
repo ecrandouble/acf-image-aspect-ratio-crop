@@ -3,16 +3,14 @@ name: Test
 on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
         acf_version:
           - 6.2.10
           - 6.1.8
-          - 6.0.7
           - 5.12.6
-          - 5.11.4
         wp_docker_tag:
           - 5.9-php7.4-apache
           - 6.1-php7.4-apache
