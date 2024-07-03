@@ -642,6 +642,7 @@ import { sprintf } from 'sprintf-js';
     openModal: function (data) {
       var url = data.attachment.attributes.url;
       var id = data.attachment.attributes.id;
+      var noCropButton = '';
       field = data.field;
 
       document.addEventListener('keydown', this.escapeHandlerBound);
@@ -707,6 +708,14 @@ import { sprintf } from 'sprintf-js';
         options.data = coordinates;
       }
 
+      if (window.aiarc_settings.allow_no_crop === '1') {
+        noCropButton = `
+          <button class="aiarc-button aiarc-button-default js-acf-image-aspect-ratio-crop-keep">
+            ${aiarc_translations.keep_dimensions}
+          </button>
+        `;
+      }
+
       // prettier-ignore
       $('body').append(`
 <div class="acf-image-aspect-ratio-crop-backdrop">
@@ -746,16 +755,14 @@ import { sprintf } from 'sprintf-js';
           <button class="aiarc-button aiarc-button-default js-acf-image-aspect-ratio-crop-cancel">
             ${aiarc_translations.cancel}
           </button>
-          <button class="aiarc-button aiarc-button-default js-acf-image-aspect-ratio-crop-keep">
-            ${aiarc_translations.keep_dimensions}
-          </button>
+          ${noCropButton}
           <button
             class="aiarc-button aiarc-button-primary js-acf-image-aspect-ratio-crop-crop"
             data-id="${id}"
             data-aspect-ratio-height="${aspectRatioHeight}"
             data-aspect-ratio-width="${aspectRatioWidth}"
             data-crop-type="${cropType}"
-          >
+          >vcsaddsdsa
             ${aiarc_translations.crop}
           </button>
         </div>

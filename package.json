@@ -39,6 +39,7 @@
     }
   },
   "scripts": {
+    "start": "npm run watch",
     "watch": "webpack --watch",
     "build": "webpack"
   }
