@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npx webpack -p
+        run: npx webpack
 
       # Do not publish od wordpress.org like the original dev does.
       # - name: WordPress Plugin Deploy
