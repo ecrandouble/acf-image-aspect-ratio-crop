@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: acf-image-aspect-ratio-crop\n"
-"POT-Creation-Date: 2024-07-03 16:39+0200\n"
-"PO-Revision-Date: 2024-07-03 17:04+0200\n"
+"Project-Id-Version: acf-image-aspect-ratio-crop-ed\n"
+"POT-Creation-Date: 2024-12-10 14:36+0100\n"
+"PO-Revision-Date: 2024-12-10 14:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -13,63 +13,64 @@ msgstr ""
 "X-Generator: Poedit 3.4.4\n"
 "X-Poedit-KeywordsList: __;_e;_x;_x:1,2c\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: acf-image-aspect-ratio-crop.php\n"
+"X-Poedit-SearchPath-0: acf-image-aspect-ratio-crop-ed.php\n"
 "X-Poedit-SearchPath-1: Autoloader.php\n"
 "X-Poedit-SearchPath-2: npx-image-editor-gd.php\n"
 "X-Poedit-SearchPath-3: settings-page.php\n"
 "X-Poedit-SearchPath-4: fields\n"
 
-#: acf-image-aspect-ratio-crop.php:219 acf-image-aspect-ratio-crop.php:737
+#: acf-image-aspect-ratio-crop-ed.php:223
+#: acf-image-aspect-ratio-crop-ed.php:741
 msgid "Attachment not found"
 msgstr "Pièce jointe non trouvée"
 
-#: acf-image-aspect-ratio-crop.php:300 acf-image-aspect-ratio-crop.php:304
-#: settings-page.php:42
+#: acf-image-aspect-ratio-crop-ed.php:304
+#: acf-image-aspect-ratio-crop-ed.php:308 settings-page.php:42
 msgid "ACF Image Aspect Ratio Crop"
 msgstr "ACF Image Aspect Ratio Crop"
 
-#: acf-image-aspect-ratio-crop.php:319
+#: acf-image-aspect-ratio-crop-ed.php:323
 msgid "Settings"
 msgstr "Réglages"
 
-#: acf-image-aspect-ratio-crop.php:765
+#: acf-image-aspect-ratio-crop-ed.php:769
 msgid "Image field missing."
 msgstr "Le champs image est manquant."
 
-#: acf-image-aspect-ratio-crop.php:772
+#: acf-image-aspect-ratio-crop-ed.php:776
 msgid "Key field missing."
 msgstr "Le champs clé est manquant."
 
-#: acf-image-aspect-ratio-crop.php:805
+#: acf-image-aspect-ratio-crop-ed.php:809
 msgid "Invalid file type."
 msgstr "Type de fichier incorrecte."
 
-#: acf-image-aspect-ratio-crop.php:819
+#: acf-image-aspect-ratio-crop-ed.php:823
 #, php-format
 msgid "File size too large. Maximum file size is %d megabytes."
 msgstr "Le fichier est trop lourd. Les taille maximale est de %d megaoctets."
 
-#: acf-image-aspect-ratio-crop.php:836
+#: acf-image-aspect-ratio-crop-ed.php:840
 #, php-format
 msgid "File size too small. Minimum file size is %d megabytes."
 msgstr "Le fichier est trop légé. Les taille minimale est de %d megaoctets."
 
-#: acf-image-aspect-ratio-crop.php:854
+#: acf-image-aspect-ratio-crop-ed.php:858
 msgid "Failed to parse image."
 msgstr "Impossible de lire l'image."
 
-#: acf-image-aspect-ratio-crop.php:870
+#: acf-image-aspect-ratio-crop-ed.php:874
 #, php-format
 msgid "Image too small. Minimum image dimensions are %d×%d pixels."
 msgstr ""
 "L'image est trop petite. Les dimensions minimum requises sont de %d×%d "
 "pixels."
 
-#: acf-image-aspect-ratio-crop.php:1210
+#: acf-image-aspect-ratio-crop-ed.php:1214
 msgid "Nonce missing."
 msgstr "Nonce manquant."
 
-#: acf-image-aspect-ratio-crop.php:1220
+#: acf-image-aspect-ratio-crop-ed.php:1224
 msgid "Invalid nonce."
 msgstr "Nonce invalide."
 

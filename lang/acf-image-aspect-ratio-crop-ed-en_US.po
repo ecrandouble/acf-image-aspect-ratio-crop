@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Plugins - Advanced Custom Fields: Image Aspect Ratio Crop Field - Stable (latest release) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: acf-image-aspect-ratio-crop\n"
-"POT-Creation-Date: 2024-07-03 16:39+0200\n"
-"PO-Revision-Date: 2024-07-03 17:14+0200\n"
+"Project-Id-Version: acf-image-aspect-ratio-crop-ed\n"
+"POT-Creation-Date: 2024-12-10 14:36+0100\n"
+"PO-Revision-Date: 2024-12-10 14:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -15,61 +15,62 @@ msgstr ""
 "X-Generator: Poedit 3.4.4\n"
 "X-Poedit-KeywordsList: __;_e;_x;_x:1,2c\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: acf-image-aspect-ratio-crop.php\n"
+"X-Poedit-SearchPath-0: acf-image-aspect-ratio-crop-ed.php\n"
 "X-Poedit-SearchPath-1: Autoloader.php\n"
 "X-Poedit-SearchPath-2: npx-image-editor-gd.php\n"
 "X-Poedit-SearchPath-3: settings-page.php\n"
 "X-Poedit-SearchPath-4: fields\n"
 
-#: acf-image-aspect-ratio-crop.php:219 acf-image-aspect-ratio-crop.php:737
+#: acf-image-aspect-ratio-crop-ed.php:223
+#: acf-image-aspect-ratio-crop-ed.php:741
 msgid "Attachment not found"
 msgstr "Attachment not found"
 
-#: acf-image-aspect-ratio-crop.php:300 acf-image-aspect-ratio-crop.php:304
-#: settings-page.php:42
+#: acf-image-aspect-ratio-crop-ed.php:304
+#: acf-image-aspect-ratio-crop-ed.php:308 settings-page.php:42
 msgid "ACF Image Aspect Ratio Crop"
 msgstr "ACF Image Aspect Ratio Crop"
 
-#: acf-image-aspect-ratio-crop.php:319
+#: acf-image-aspect-ratio-crop-ed.php:323
 msgid "Settings"
 msgstr "Settings"
 
-#: acf-image-aspect-ratio-crop.php:765
+#: acf-image-aspect-ratio-crop-ed.php:769
 msgid "Image field missing."
 msgstr "Image field missing."
 
-#: acf-image-aspect-ratio-crop.php:772
+#: acf-image-aspect-ratio-crop-ed.php:776
 msgid "Key field missing."
 msgstr "Key field missing."
 
-#: acf-image-aspect-ratio-crop.php:805
+#: acf-image-aspect-ratio-crop-ed.php:809
 msgid "Invalid file type."
 msgstr "Invalid file type."
 
-#: acf-image-aspect-ratio-crop.php:819
+#: acf-image-aspect-ratio-crop-ed.php:823
 #, php-format
 msgid "File size too large. Maximum file size is %d megabytes."
 msgstr "File size too large. Maximum file size is %d megabytes."
 
-#: acf-image-aspect-ratio-crop.php:836
+#: acf-image-aspect-ratio-crop-ed.php:840
 #, php-format
 msgid "File size too small. Minimum file size is %d megabytes."
 msgstr "File size too small. Minimum file size is %d megabytes."
 
-#: acf-image-aspect-ratio-crop.php:854
+#: acf-image-aspect-ratio-crop-ed.php:858
 msgid "Failed to parse image."
 msgstr "Failed to parse image."
 
-#: acf-image-aspect-ratio-crop.php:870
+#: acf-image-aspect-ratio-crop-ed.php:874
 #, php-format
 msgid "Image too small. Minimum image dimensions are %d×%d pixels."
 msgstr "Image too small. Minimum image dimensions are %d×%d pixels."
 
-#: acf-image-aspect-ratio-crop.php:1210
+#: acf-image-aspect-ratio-crop-ed.php:1214
 msgid "Nonce missing."
 msgstr "Nonce missing."
 
-#: acf-image-aspect-ratio-crop.php:1220
+#: acf-image-aspect-ratio-crop-ed.php:1224
 msgid "Invalid nonce."
 msgstr "Invalid nonce."
 
@@ -319,21 +320,21 @@ msgstr ""
 "that this is a temporary fix since the REST API is the way forward. The "
 "compatibility mode will be removed in a future major release of the plugin."
 
-msgid "https://siipo.la"
-msgstr "https://siipo.la"
+#~ msgid "https://siipo.la"
+#~ msgstr "https://siipo.la"
 
-msgid "Johannes Siipola"
-msgstr "Johannes Siipola"
+#~ msgid "Johannes Siipola"
+#~ msgstr "Johannes Siipola"
 
-msgid "https://github.com/joppuyo/acf-image-aspect-ratio-crop"
-msgstr "https://github.com/joppuyo/acf-image-aspect-ratio-crop"
+#~ msgid "https://github.com/joppuyo/acf-image-aspect-ratio-crop"
+#~ msgstr "https://github.com/joppuyo/acf-image-aspect-ratio-crop"
 
-msgid "Advanced Custom Fields: Image Aspect Ratio Crop"
-msgstr "Advanced Custom Fields: Image Aspect Ratio Crop"
+#~ msgid "Advanced Custom Fields: Image Aspect Ratio Crop"
+#~ msgstr "Advanced Custom Fields: Image Aspect Ratio Crop"
 
-msgid ""
-"ACF field that allows user to crop image to a specific aspect ratio or pixel "
-"size"
-msgstr ""
-"ACF field that allows user to crop image to a specific aspect ratio or pixel "
-"size"
+#~ msgid ""
+#~ "ACF field that allows user to crop image to a specific aspect ratio or "
+#~ "pixel size"
+#~ msgstr ""
+#~ "ACF field that allows user to crop image to a specific aspect ratio or "
+#~ "pixel size"

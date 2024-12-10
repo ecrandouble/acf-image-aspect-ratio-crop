@@ -33,7 +33,7 @@ services:
     volumes:
       - wordpress:/var/www/html
       # - ./wp-content:/var/www/html/wp-content
-      - ./:/var/www/html/wp-content/plugins/acf-image-aspect-ratio-crop
+      - ./:/var/www/html/wp-content/plugins/acf-image-aspect-ratio-crop-ed
       - ./wordpress.ini:/usr/local/etc/php/conf.d/wordpress.ini
 
   db:

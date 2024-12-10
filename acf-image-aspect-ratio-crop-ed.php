@@ -9,7 +9,7 @@ Author: ecrandouble (fork from Johannes Siipola's plugin)
 Author URI: https://siipo.la
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: acf-image-aspect-ratio-crop
+Text Domain: acf-image-aspect-ratio-crop-ed
 Domain Path: /lang
 */
 
@@ -33,7 +33,7 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 PucFactory::buildUpdateChecker(
     'https://github.com/ecrandouble/acf-image-aspect-ratio-crop',
     __FILE__, //Full path to the main plugin file or functions.php.
-    'acf-image-aspect-ratio-crop'
+    'acf-image-aspect-ratio-crop-ed'
 );
 
 class npx_acf_plugin_image_aspect_ratio_crop
@@ -75,7 +75,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
         // set text domain
         // https://codex.wordpress.org/Function_Reference/load_plugin_textdomain
         load_plugin_textdomain(
-            'acf-image-aspect-ratio-crop',
+            'acf-image-aspect-ratio-crop-ed',
             false,
             basename(__DIR__) . '/lang'
         );
@@ -221,7 +221,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
                     wp_die(
                         __(
                             'Attachment not found',
-                            'acf-image-aspect-ratio-crop'
+                            'acf-image-aspect-ratio-crop-ed'
                         ),
                         [
                             'response' => 404,
@@ -302,14 +302,14 @@ class npx_acf_plugin_image_aspect_ratio_crop
                 'options-general.php',
                 __(
                     'ACF Image Aspect Ratio Crop',
-                    'acf-image-aspect-ratio-crop'
+                    'acf-image-aspect-ratio-crop-ed'
                 ),
                 __(
                     'ACF Image Aspect Ratio Crop',
-                    'acf-image-aspect-ratio-crop'
+                    'acf-image-aspect-ratio-crop-ed'
                 ),
                 'manage_options',
-                'acf-image-aspect-ratio-crop',
+                'acf-image-aspect-ratio-crop-ed',
                 [$this, 'settings_page']
             );
         });
@@ -320,7 +320,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
             function ($links) {
                 $settings_link =
                     '<a href="options-general.php?page=acf-image-aspect-ratio-crop">' .
-                    __('Settings', 'acf-image-aspect-ratio-crop') .
+                    __('Settings', 'acf-image-aspect-ratio-crop-ed') .
                     '</a>';
                 array_unshift($links, $settings_link);
                 return $links;
@@ -337,7 +337,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
                         '<a href="https://github.com/sponsors/joppuyo">' .
                             esc_html__(
                                 'Support development on GitHub Sponsors',
-                                'acf-image-aspect-ratio-crop'
+                                'acf-image-aspect-ratio-crop-ed'
                             ) .
                             '</a>'
                     );
@@ -738,7 +738,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
             wp_send_json_error(
                 new WP_Error(
                     'attachment_not_found',
-                    __('Attachment not found', 'acf-image-aspect-ratio-crop')
+                    __('Attachment not found', 'acf-image-aspect-ratio-crop-ed')
                 ),
                 404
             );
@@ -766,14 +766,14 @@ class npx_acf_plugin_image_aspect_ratio_crop
         if (empty($data->get_file_params()['image'])) {
             return new WP_Error(
                 'image_field_missing',
-                __('Image field missing.', 'acf-image-aspect-ratio-crop')
+                __('Image field missing.', 'acf-image-aspect-ratio-crop-ed')
             );
         }
 
         if (empty($data->get_param('key'))) {
             return new WP_Error(
                 'key_field_missing',
-                __('Key field missing.', 'acf-image-aspect-ratio-crop')
+                __('Key field missing.', 'acf-image-aspect-ratio-crop-ed')
             );
         }
 
@@ -806,7 +806,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
         ) {
             return new WP_Error(
                 'invalid_mime_type',
-                __('Invalid file type.', 'acf-image-aspect-ratio-crop')
+                __('Invalid file type.', 'acf-image-aspect-ratio-crop-ed')
             );
         }
 
@@ -821,11 +821,11 @@ class npx_acf_plugin_image_aspect_ratio_crop
                 sprintf(
                     __(
                         'File size too large. Maximum file size is %d megabytes.',
-                        'acf-image-aspect-ratio-crop'
+                        'acf-image-aspect-ratio-crop-ed'
                     ),
                     $max_size
                 ),
-                'acf-image-aspect-ratio-crop'
+                'acf-image-aspect-ratio-crop-ed'
             );
         }
 
@@ -838,11 +838,11 @@ class npx_acf_plugin_image_aspect_ratio_crop
                 sprintf(
                     __(
                         'File size too small. Minimum file size is %d megabytes.',
-                        'acf-image-aspect-ratio-crop'
+                        'acf-image-aspect-ratio-crop-ed'
                     ),
                     $min_size
                 ),
-                'acf-image-aspect-ratio-crop'
+                'acf-image-aspect-ratio-crop-ed'
             );
         }
 
@@ -855,7 +855,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
         if (!$image_size) {
             return new WP_Error(
                 'failed_to_parse_image',
-                __('Failed to parse image.', 'acf-image-aspect-ratio-crop')
+                __('Failed to parse image.', 'acf-image-aspect-ratio-crop-ed')
             );
         }
 
@@ -872,12 +872,12 @@ class npx_acf_plugin_image_aspect_ratio_crop
                 sprintf(
                     __(
                         'Image too small. Minimum image dimensions are %d×%d pixels.',
-                        'acf-image-aspect-ratio-crop'
+                        'acf-image-aspect-ratio-crop-ed'
                     ),
                     $min_width,
                     $min_height
                 ),
-                'acf-image-aspect-ratio-crop'
+                'acf-image-aspect-ratio-crop-ed'
             );
         }
 
@@ -1211,7 +1211,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
             wp_send_json_error(
                 new WP_Error(
                     'nonce_missing',
-                    __('Nonce missing.', 'acf-image-aspect-ratio-crop')
+                    __('Nonce missing.', 'acf-image-aspect-ratio-crop-ed')
                 ),
                 400
             );
@@ -1221,7 +1221,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
             wp_send_json_error(
                 new WP_Error(
                     'invalid_nonce',
-                    __('Invalid nonce.', 'acf-image-aspect-ratio-crop')
+                    __('Invalid nonce.', 'acf-image-aspect-ratio-crop-ed')
                 ),
                 400
             );

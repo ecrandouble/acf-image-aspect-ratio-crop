@@ -56,7 +56,7 @@ class Autoloader
                 // phpcs:ignore
                 esc_html__(
                     'Your installation of acf-image-aspect-ratio-crop is incomplete.',
-                    'acf-image-aspect-ratio-crop'
+                    'acf-image-aspect-ratio-crop-ed'
                 )
             );
         }
@@ -68,7 +68,7 @@ class Autoloader
           /* translators: 1: is a link to a support document. 2: closing link */
           esc_html__(
               'Your installation of acf-image-aspect-ratio-crop is incomplete.',
-              'acf-image-aspect-ratio-crop'
+              'acf-image-aspect-ratio-crop-ed'
           ),
           '<a href="' . esc_url('mailto:support@ecrandouble.ch') . '">',
           '</a>'

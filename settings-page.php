@@ -39,7 +39,10 @@ $rest_api_compat = $settings['rest_api_compat'];
 ?>
 <div class="wrap">
     <h1>
-        <?= __('ACF Image Aspect Ratio Crop', 'acf-image-aspect-ratio-crop') ?>
+        <?= __(
+            'ACF Image Aspect Ratio Crop',
+            'acf-image-aspect-ratio-crop-ed'
+        ) ?>
     </h1>
     <div class="js-finnish-base-forms-admin-notices"></div>
     <?php if ($updated): ?>
@@ -47,7 +50,7 @@ $rest_api_compat = $settings['rest_api_compat'];
             <p>
                 <?= __(
                     'Options have been updated',
-                    'acf-image-aspect-ratio-crop'
+                    'acf-image-aspect-ratio-crop-ed'
                 ) ?>
             </p>
         </div>
@@ -60,7 +63,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                         <label for="modal_type">
                             <?= __(
                                 'Image displayed in attachment edit modal dialog',
-                                'acf-image-aspect-ratio-crop'
+                                'acf-image-aspect-ratio-crop-ed'
                             ) ?>
                         </label>
                     </th>
@@ -74,7 +77,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                             <label for="cropped">
                                 <?= __(
                                     'Cropped image',
-                                    'acf-image-aspect-ratio-crop'
+                                    'acf-image-aspect-ratio-crop-ed'
                                 ) ?>
                             </label>
                         </p>
@@ -85,7 +88,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                             <label for="original">
                                 <?= __(
                                     'Original image',
-                                    'acf-image-aspect-ratio-crop'
+                                    'acf-image-aspect-ratio-crop-ed'
                                 ) ?>
                             </label>
                         </p>
@@ -96,7 +99,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                         <label for="modal_type">
                             <?= __(
                                 'Allow to keep the original dimensions of the image',
-                                'acf-image-aspect-ratio-crop'
+                                'acf-image-aspect-ratio-crop-ed'
                             ) ?>
                         </label>
                     </th>
@@ -110,7 +113,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                             <label for="allow_no_crop_true">
                                 <?= __(
                                     'Enabled',
-                                    'acf-image-aspect-ratio-crop'
+                                    'acf-image-aspect-ratio-crop-ed'
                                 ) ?>
                             </label>
                         </p>
@@ -123,7 +126,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                             <label for="allow_no_crop_false">
                                 <?= __(
                                     'Disabled',
-                                    'acf-image-aspect-ratio-crop'
+                                    'acf-image-aspect-ratio-crop-ed'
                                 ) ?>
                             </label>
                         </p>
@@ -134,11 +137,11 @@ $rest_api_compat = $settings['rest_api_compat'];
                         <label for="modal_type">
                             <?= __(
                                 'Delete unused cropped images',
-                                'acf-image-aspect-ratio-crop'
+                                'acf-image-aspect-ratio-crop-ed'
                             ) ?>
                             <?= __(
                                 '(Beta feature)',
-                                'acf-image-aspect-ratio-crop'
+                                'acf-image-aspect-ratio-crop-ed'
                             ) ?>
                         </label>
                     </th>
@@ -152,7 +155,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                             <label for="delete_unused_true">
                                 <?= __(
                                     'Enabled',
-                                    'acf-image-aspect-ratio-crop'
+                                    'acf-image-aspect-ratio-crop-ed'
                                 ) ?>
                             </label>
                         </p>
@@ -165,7 +168,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                             <label for="delete_unused_false">
                                 <?= __(
                                     'Disabled',
-                                    'acf-image-aspect-ratio-crop'
+                                    'acf-image-aspect-ratio-crop-ed'
                                 ) ?>
                             </label>
                         </p>
@@ -175,7 +178,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                     <td colspan="2" style="padding: 0">
                         <?= __(
                             'Please note that "Delete unused cropped images" feature is a beta feature because it requires more testing. Please do not enable the option without first backing up your database and uploads in order to prevent potential data loss.',
-                            'acf-image-aspect-ratio-crop'
+                            'acf-image-aspect-ratio-crop-ed'
                         ) ?>
                     </td>
                 </tr>
@@ -184,7 +187,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                         <label for="modal_type">
                             <?= __(
                                 'REST API compatibility mode',
-                                'acf-image-aspect-ratio-crop'
+                                'acf-image-aspect-ratio-crop-ed'
                             ) ?>
                         </label>
                     </th>
@@ -198,7 +201,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                             <label for="rest_api_compat_true">
                                 <?= __(
                                     'Enabled',
-                                    'acf-image-aspect-ratio-crop'
+                                    'acf-image-aspect-ratio-crop-ed'
                                 ) ?>
                             </label>
                         </p>
@@ -211,7 +214,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                             <label for="rest_api_compat_false">
                                 <?= __(
                                     'Disabled',
-                                    'acf-image-aspect-ratio-crop'
+                                    'acf-image-aspect-ratio-crop-ed'
                                 ) ?>
                             </label>
                         </p>
@@ -221,7 +224,7 @@ $rest_api_compat = $settings['rest_api_compat'];
                     <td colspan="2" style="padding: 0">
                         <?php __(
                             'When you enable the REST API compatibility mode, cropping in the WordPress administration interface will use admin-ajax.php instead of the REST API. Use this compatibility mode if you do not have REST API enabled. Please note that this is a temporary fix since the REST API is the way forward. The compatibility mode will be removed in a future major release of the plugin.',
-                            'acf-image-aspect-ratio-crop'
+                            'acf-image-aspect-ratio-crop-ed'
                         ); ?>
                     </td>
                 </tr>

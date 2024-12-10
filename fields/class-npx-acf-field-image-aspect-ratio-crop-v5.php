@@ -43,7 +43,7 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
 
         $this->label = __(
             'Image Aspect Ratio Crop',
-            'acf-image-aspect-ratio-crop'
+            'acf-image-aspect-ratio-crop-ed'
         );
 
         /*
@@ -107,7 +107,7 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
          */
 
         //$this->l10n = array(
-        //    'error'    => __('Error! Please enter a higher value', 'acf-image-aspect-ratio-crop'),
+        //    'error'    => __('Error! Please enter a higher value', 'acf-image-aspect-ratio-crop-ed'),
         //);
 
         /*
@@ -163,22 +163,28 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
 
         // return_format
         acf_render_field_setting($field, [
-            'label' => __('Crop type', 'acf-image-aspect-ratio-crop'),
+            'label' => __('Crop type', 'acf-image-aspect-ratio-crop-ed'),
             'type' => 'select',
             'name' => 'crop_type',
             'class' => 'crop-type-select',
             'choices' => [
                 'aspect_ratio' => __(
                     'Aspect ratio',
-                    'acf-image-aspect-ratio-crop'
+                    'acf-image-aspect-ratio-crop-ed'
                 ),
-                'pixel_size' => __('Pixel size', 'acf-image-aspect-ratio-crop'),
-                'free_crop' => __('Free crop', 'acf-image-aspect-ratio-crop'),
+                'pixel_size' => __(
+                    'Pixel size',
+                    'acf-image-aspect-ratio-crop-ed'
+                ),
+                'free_crop' => __(
+                    'Free crop',
+                    'acf-image-aspect-ratio-crop-ed'
+                ),
             ],
         ]);
 
         acf_render_field_setting($field, [
-            'label' => __('Width', 'acf-image-aspect-ratio-crop'),
+            'label' => __('Width', 'acf-image-aspect-ratio-crop-ed'),
             'type' => 'number',
             'required' => true,
             'class' => 'js-aspect-ratio-width',
@@ -191,7 +197,7 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
         ]);
 
         acf_render_field_setting($field, [
-            'label' => __('Height', 'acf-image-aspect-ratio-crop'),
+            'label' => __('Height', 'acf-image-aspect-ratio-crop-ed'),
             'type' => 'number',
             'required' => true,
             'class' => 'js-aspect-ratio-height',
@@ -553,7 +559,7 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
         $version = $this->settings['version'];
 
         wp_register_script(
-            'acf-image-aspect-ratio-crop',
+            'acf-image-aspect-ratio-crop-ed',
             "{$url}assets/dist/input-script.js",
             ['acf-input', 'backbone'],
             WP_DEBUG
@@ -565,24 +571,27 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
         $translation_array = [
             'cropping_in_progress' => __(
                 'Cropping image...',
-                'acf-image-aspect-ratio-crop'
+                'acf-image-aspect-ratio-crop-ed'
             ),
             'cropping_failed' => __(
                 'Failed to crop image',
-                'acf-image-aspect-ratio-crop'
+                'acf-image-aspect-ratio-crop-ed'
             ),
-            'crop' => __('Crop', 'acf-image-aspect-ratio-crop'),
-            'cancel' => __('Cancel', 'acf-image-aspect-ratio-crop'),
-            'modal_title' => __('Crop image', 'acf-image-aspect-ratio-crop'),
-            'reset' => __('Reset crop', 'acf-image-aspect-ratio-crop'),
-            'keep_dimensions' => __('No crop', 'acf-image-aspect-ratio-crop'),
+            'crop' => __('Crop', 'acf-image-aspect-ratio-crop-ed'),
+            'cancel' => __('Cancel', 'acf-image-aspect-ratio-crop-ed'),
+            'modal_title' => __('Crop image', 'acf-image-aspect-ratio-crop-ed'),
+            'reset' => __('Reset crop', 'acf-image-aspect-ratio-crop-ed'),
+            'keep_dimensions' => __(
+                'No crop',
+                'acf-image-aspect-ratio-crop-ed'
+            ),
             'upload_progress' => __(
                 'Uploading image. Progress %d%%.',
-                'acf-image-aspect-ratio-crop'
+                'acf-image-aspect-ratio-crop-ed'
             ),
             'upload_failed' => __(
                 'Upload failed.',
-                'acf-image-aspect-ratio-crop'
+                'acf-image-aspect-ratio-crop-ed'
             ),
         ];
 
@@ -604,20 +613,24 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
             'api_root' => untrailingslashit(get_rest_url()),
         ];
         wp_localize_script(
-            'acf-image-aspect-ratio-crop',
+            'acf-image-aspect-ratio-crop-ed',
             'aiarc_settings',
             $settings_array
         );
         wp_localize_script(
-            'acf-image-aspect-ratio-crop',
+            'acf-image-aspect-ratio-crop-ed',
             'aiarc_translations',
             $translation_array
         );
-        wp_localize_script('acf-image-aspect-ratio-crop', 'aiarc', $data_array);
+        wp_localize_script(
+            'acf-image-aspect-ratio-crop-ed',
+            'aiarc',
+            $data_array
+        );
 
-        wp_enqueue_script('acf-image-aspect-ratio-crop');
+        wp_enqueue_script('acf-image-aspect-ratio-crop-ed');
         wp_register_style(
-            'acf-image-aspect-ratio-crop',
+            'acf-image-aspect-ratio-crop-ed',
             "{$url}assets/dist/input-style.css",
             ['acf-input'],
             WP_DEBUG
@@ -626,7 +639,7 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
                 )
                 : $version
         );
-        wp_enqueue_style('acf-image-aspect-ratio-crop');
+        wp_enqueue_style('acf-image-aspect-ratio-crop-ed');
     }
 
     /*
@@ -639,13 +652,13 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
 
 
         // register & include JS
-        wp_register_script('acf-image-aspect-ratio-crop', "{$url}assets/js/input.js", array('acf-input'), $version);
-        wp_enqueue_script('acf-image-aspect-ratio-crop');
+        wp_register_script('acf-image-aspect-ratio-crop-ed', "{$url}assets/js/input.js", array('acf-input'), $version);
+        wp_enqueue_script('acf-image-aspect-ratio-crop-ed');
 
 
         // register & include CSS
-        wp_register_style('acf-image-aspect-ratio-crop', "{$url}assets/css/input.css", array('acf-input'), $version);
-        wp_enqueue_style('acf-image-aspect-ratio-crop');
+        wp_register_style('acf-image-aspect-ratio-crop-ed', "{$url}assets/css/input.css", array('acf-input'), $version);
+        wp_enqueue_style('acf-image-aspect-ratio-crop-ed');
 
     }
 
@@ -959,7 +972,7 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
         // Advanced usage
         if( $value < $field['custom_minimum_setting'] )
         {
-            $valid = __('The value is too little!','acf-image-aspect-ratio-crop'),
+            $valid = __('The value is too little!','acf-image-aspect-ratio-crop-ed'),
         }
 
 
