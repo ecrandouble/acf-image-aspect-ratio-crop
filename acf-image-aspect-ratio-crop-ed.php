@@ -29,6 +29,7 @@ if (!\Joppuyo\AIARC\Autoloader::init()) {
 }
 
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+use YahnisElsts\PluginUpdateChecker\v5p5\Vcs\Api;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
     'https://github.com/ecrandouble/acf-image-aspect-ratio-crop',
