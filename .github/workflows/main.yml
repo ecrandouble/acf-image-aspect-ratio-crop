@@ -1,12 +1,10 @@
 name: Deploy
 
 on:
-  [push]
-  # workflow_run:
-  #   workflows: ["Test"]
-  #   branches: [master, main]
-  #   types:
-  #     - completed
+  push:
+    branches: ['master', 'main']
+    tags:
+      - '*'
 
 jobs:
   build:
