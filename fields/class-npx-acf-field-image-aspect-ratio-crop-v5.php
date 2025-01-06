@@ -396,6 +396,13 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
 
         $image_id = null;
         $original = null;
+        $o = [
+            'title' => '',
+            'url' => '',
+            'filename' => '',
+            'filesize' => '',
+            'thumbnail' => '',
+        ];
 
         // has value?
         if ($field['value']) {
@@ -465,33 +472,48 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
             if ($url) {
                 $div['class'] .= ' has-value';
             }
-        }
 
-        // get size of preview value
-        $size = acf_get_image_size($field['preview_size']);
+            $attachment = acf_get_attachment($image_id);
+            if ($attachment) {
+                // has value
+                $o['title'] = get_the_title($original);
+                $o['thumbnail'] = esc_url($url);
+                $o['filesize'] = size_format($attachment['filesize']);
+            }
+        }
         ?>
-        <div <?php acf_esc_attr_e($div); ?>>
+        <div <?= acf_esc_attrs($div) ?>>
             <?php acf_hidden_input([
                 'name' => $field['name'],
                 'value' => $image_id,
             ]); ?>
-            <div class="show-if-value image-wrap"
-                 <?php if ($size['width']): ?>style="<?php echo esc_attr(
-    'max-width: ' . $size['width'] . 'px'
-); ?>"<?php endif; ?>>
-                <img data-name="image" src="<?php echo esc_url(
-                    $url
-                ); ?>" alt="<?php echo esc_attr($alt); ?>"/>
-                <div class="acf-actions -hover">
+            <div class="show-if-value file-wrap">
+                <img class="file-image" data-name="image" src="<?= $o[
+                    'thumbnail'
+                ] ?>"
+                alt="<?= esc_attr($alt) ?>"/>
+                <div class="file-info">
+                    <p>
+                        <strong data-name="title"><?= esc_html(
+                            $o['title']
+                        ) ?></strong>
+                    </p>
+                    <p>
+                        <strong><?php _e('File size', 'acf'); ?>:</strong>
+                        <span data-name="filesize"><?= esc_html(
+                            $o['filesize']
+                        ) ?></span>
+                    </p>
+                </div>
+                <div class="acf-actions hover">
                     <a class="acf-icon -crop dark" data-name="crop" href="#"
-                       title="<?php _e('Crop', 'acf'); ?>"></a>
+                        title="<?php _e('Crop', 'acf'); ?>"></a>
                     <?php if ($uploader != 'basic'): ?>
-                    <a class="acf-icon -pencil dark" data-name="edit" href="#"
-                       title="<?php _e(
-                           'Edit',
-                           'acf'
-                       ); ?>"></a><?php endif; ?><a class="acf-icon -cancel-custom dark" data-name="remove" href="#"
-                         title="<?php _e('Remove', 'acf'); ?>"></a>
+                        <a class="acf-icon -pencil dark" data-name="edit" href="#"
+                        title="<?php _e('Edit', 'acf'); ?>"></a>
+                    <?php endif; ?>
+                    <a class="acf-icon -cancel-custom dark" data-name="remove" href="#"
+                    title="<?php _e('Remove', 'acf'); ?>"></a>
                 </div>
             </div>
             <div class="hide-if-value">
@@ -554,7 +576,6 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
 
     function input_admin_enqueue_scripts()
     {
-        global $post;
         $url = $this->settings['url'];
         $version = $this->settings['version'];
 

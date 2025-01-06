@@ -4,7 +4,7 @@
 Plugin Name: ecrandouble ACF: Image Aspect Ratio Crop
 Plugin URI: https://github.com/ecrandouble/acf-image-aspect-ratio-crop
 Description: ACF field that allows user to crop image to a specific aspect ratio or pixel size
-Version: 6.1.1
+Version: 6.1.2
 Author: ecrandouble (fork from Johannes Siipola's plugin)
 Author URI: https://siipo.la
 License: GPLv2 or later
@@ -30,11 +30,12 @@ if (!\Joppuyo\AIARC\Autoloader::init()) {
 
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-PucFactory::buildUpdateChecker(
+$myUpdateChecker = PucFactory::buildUpdateChecker(
     'https://github.com/ecrandouble/acf-image-aspect-ratio-crop',
     __FILE__, //Full path to the main plugin file or functions.php.
     'acf-image-aspect-ratio-crop-ed'
 );
+$myUpdateChecker->getVcsApi()->enableReleaseAssets();
 
 class npx_acf_plugin_image_aspect_ratio_crop
 {
@@ -731,7 +732,6 @@ class npx_acf_plugin_image_aspect_ratio_crop
     {
         // TODO: validate nonce
         $attachment_id = $data->get_param('id');
-
         $attachment = get_post($attachment_id);
 
         if (!$attachment) {
@@ -745,6 +745,23 @@ class npx_acf_plugin_image_aspect_ratio_crop
         }
 
         $attachment = wp_prepare_attachment_for_js($attachment);
+
+        $original = get_post_meta(
+            $attachment_id,
+            'acf_image_aspect_ratio_crop_original_image_id',
+            true
+        );
+        if ($original) {
+            $original_attachment = acf_get_attachment($original);
+            if ($original_attachment) {
+                $attachment['original'] = [
+                    'title' => $original_attachment['title'],
+                    'url' => $original_attachment['url'],
+                    'filename' => $original_attachment['filename'],
+                    'filesize' => size_format($original_attachment['filesize']),
+                ];
+            }
+        }
 
         return new WP_REST_Response($attachment);
     }
