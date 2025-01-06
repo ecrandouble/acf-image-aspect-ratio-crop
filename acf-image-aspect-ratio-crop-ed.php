@@ -35,7 +35,12 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
     __FILE__, //Full path to the main plugin file or functions.php.
     'acf-image-aspect-ratio-crop-ed'
 );
-$myUpdateChecker->getVcsApi()->enableReleaseAssets();
+$myUpdateChecker
+    ->getVcsApi()
+    ->enableReleaseAssets(
+        '/acf-image-aspect-ratio-crop\.zip($|[?&#])/i',
+        Api::REQUIRE_RELEASE_ASSETS
+    );
 
 class npx_acf_plugin_image_aspect_ratio_crop
 {
