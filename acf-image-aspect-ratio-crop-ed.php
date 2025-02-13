@@ -952,6 +952,19 @@ class npx_acf_plugin_image_aspect_ratio_crop
             $data['id']
         );
 
+        // Try to fix metadatas by regenerating them
+        if ($image_data === false) {
+            $original_path = get_attached_file($data['id']);
+            if (!empty($original_path) && is_file($original_path)) {
+                require_once ABSPATH . 'wp-admin/includes/image.php';
+                wp_generate_attachment_metadata(
+                    $data['id'],
+                    get_attached_file($data['id'])
+                );
+            }
+        }
+
+        // Test if we failed to recreate metadatas
         if ($image_data === false) {
             $error_text =
                 'Failed to get image data. Maybe the original image was deleted?';
