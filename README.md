@@ -71,6 +71,16 @@ You can download the plugin from the [WordPress plugin directory](https://wordpr
 - Enable Media Replace
 - WP Offload Media, Media Cloud and other plugins that move media files to remote location
 
+## Development
+
+Run `npm install` and `composer install` to install the dependencies.
+
+Run `npm start` to watch for changes and build the plugin.
+
+To build the plugin, run `npx webpack`.
+
+To release a new version, just push a tag with the new version number. The github Action will do the rest.
+
 ## Frequently Asked Questions
 
 ### Can I use this plugin with a front-end acf_form?

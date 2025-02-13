@@ -427,8 +427,12 @@ import { sprintf } from 'sprintf-js';
         this.$el.removeClass('has-value');
       }
 
-      this.$el.find('[data-name="title"]').text(data.original.title);
-      this.$el.find('[data-name="filesize"]').text(data.filesizeHumanReadable);
+      if (typeof data.original !== 'undefined') {
+        this.$el.find('[data-name="title"]').text(data.original.title);
+        this.$el
+          .find('[data-name="filesize"]')
+          .text(data.filesizeHumanReadable);
+      }
     },
 
     /*
