@@ -13,6 +13,8 @@ if (!defined('ABSPATH')) {
 
 class npx_acf_field_image_aspect_ratio_crop extends acf_field
 {
+    public array $settings = [];
+
     /** @var string */
     public $temp_post_id;
 
