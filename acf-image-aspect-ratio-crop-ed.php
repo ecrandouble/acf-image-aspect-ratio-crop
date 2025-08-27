@@ -4,7 +4,7 @@
 Plugin Name: ecrandouble ACF: Image Aspect Ratio Crop
 Plugin URI: https://github.com/ecrandouble/acf-image-aspect-ratio-crop
 Description: ACF field that allows user to crop image to a specific aspect ratio or pixel size
-Version: 6.1.5
+Version: 6.1.6
 Author: ecrandouble (fork from Johannes Siipola's plugin)
 Author URI: https://siipo.la
 License: GPLv2 or later
@@ -29,7 +29,7 @@ if (!\Joppuyo\AIARC\Autoloader::init()) {
 }
 
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-use YahnisElsts\PluginUpdateChecker\v5p5\Vcs\Api;
+use YahnisElsts\PluginUpdateChecker\v5p6\Vcs\Api;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
     'https://github.com/ecrandouble/acf-image-aspect-ratio-crop',
